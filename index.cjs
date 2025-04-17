@@ -1,3 +1,5 @@
+// Original version
+
 const sh = require('shelljs');
 
 class xdofool {
