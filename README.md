@@ -1,11 +1,11 @@
 # Demo-Streamed
 ## Fully external, multi-stream CS2 demo recorder for Linux
 
-## Dependencies (apt)
+### Dependencies (apt)
 - ffmpeg
 - xdotool
 
-## Dependencies (npm)
+### Dependencies (npm)
 - shelljs
 - typescript
 
