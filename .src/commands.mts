@@ -1,4 +1,4 @@
-import { config } from "./config"
+import { config } from "./config.mjs"
 
 export interface stream {
     name: string, // The name of the stream. Used in the filenames

@@ -1,7 +1,7 @@
-import { config } from './config'
-import { commands } from './commands'
-import { xdofool } from './xdofool'
-import { consoleTools } from './console'
+import { config } from './config.mjs'
+import { commands } from './commands.mjs'
+import { xdofool } from './xdofool.mjs'
+import { consoleTools } from './console.mjs'
 
 function recordFrame() {
     xdofool.type(config.pauseRebind) // Pause demo

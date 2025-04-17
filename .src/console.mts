@@ -1,4 +1,4 @@
-import { xdofool } from "./xdofool"
+import { xdofool } from "./xdofool.mjs"
 export class consoleTools {
     static openConsole() {
         xdofool.type('=')
