@@ -19,7 +19,7 @@ export class xdofool {
         recordDir: string,
         framecounterDigits: number,
         stream: stream,
-    }) { // This function takes a screer_show_build_info 0nshot and saves it to a folder
+    }) { // This function takes a screenshot and saves it to a folder
         this.exec(`ffmpeg -framerate ${config.framerate} -i ${config.recordDir}${config.stream.name}%0${config.framecounterDigits}d.tga -c:v libx264 -pix_fmt yuv420p ${config.recordDir}${config.stream.name}.mp4`)
     }
     static screenshot(config: {
