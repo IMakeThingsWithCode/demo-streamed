@@ -1,7 +1,7 @@
 # Demo-Streamed
 ## *Fully external, multi-stream CS2 demo recorder for Linux*
 
-> This project is **not** robust. It is a quick and dirty way of getting demo recording working on Linux.
+> This project is **not** robust. It is a quick and dirty way of getting demo recording working on Linux. Don't expect your experience to be streamlined or working out-of-the-box. If you are looking for something a little more professional, please check out [HLAE](https://github.com/advancedfx/advancedfx).
 
 
 ## Installation
