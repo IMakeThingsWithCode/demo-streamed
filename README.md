@@ -3,6 +3,13 @@
 
 > This project is **not** robust. It is a quick and dirty way of getting demo recording working on Linux. Don't expect your experience to be streamlined or working out-of-the-box. If you are looking for something a little more professional, please check out [HLAE](https://github.com/advancedfx/advancedfx).
 
+A few advantages of external:
+- Easily tweakable to work on many machines
+- Doesn't require injection
+- Externals can be build from the ground up very quickly (this program could be ported to other operating systems easily)
+
+*This project is external as in it emulates keypresses, not as in it edits memory.*
+
 
 ## Installation
 ### Dependencies (apt)
