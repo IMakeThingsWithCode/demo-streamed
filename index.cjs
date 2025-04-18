@@ -1,4 +1,5 @@
 // Original version
+// No longer maintaned, may work
 
 const sh = require('shelljs');
 
