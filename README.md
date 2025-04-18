@@ -1,6 +1,9 @@
 # Demo-Streamed
 ## *Fully external, multi-stream CS2 demo recorder for Linux*
 
+> This project is **not** robust. It is a quick and dirty way of getting demo recording working on Linux.
+
+
 ## Installation
 ### Dependencies (apt)
 - ffmpeg
@@ -13,9 +16,9 @@
 - typescript
 
 ### Adapting to your system
-- Edit `.src/xdofool.mts` to change terminal commands.
+- Edit `.src/xdofool.mts` to edit terminal commands for your needs
 - Change your configuration in `.src/config.mts`
-- Update your demo recording settings in `.src/commands.mts`
+- Update your demo recording/stream settings in `.src/commands.mts`
 
 ## Running
 1. Pause your CS2 demo and hide the console.

@@ -36,7 +36,7 @@ export const commands: {
                 'r_drawviewmodel 0',
                 'cl_drawhud 0',
                 'r_csgo_render_decals 0',
-                'r_drawparticles 1'
+                'r_drawparticles 0'
             ]
         },
         {
@@ -52,13 +52,13 @@ export const commands: {
             'isBind': true,
             'bind': '/',
             'commands': [
-                'r_csgo_render_dynamic_objects 1',
                 'mat_fullbright 0',
                 'sc_disable_world_materials 0',
                 'sc_setclassflags Default 0',
-                'r_drawviewmodel 0',
-                'cl_drawhud 1',
-                'r_csgo_render_decals 1'
+                'r_drawviewmodel 1',
+                'cl_drawhud 0',
+                'r_csgo_render_decals 1',
+                'r_drawparticles 1'
             ]
         },
         {
@@ -67,7 +67,7 @@ export const commands: {
             'bind': 'v',
             'commands': [
                 'r_drawviewmodel 0',
-                'cl_drawhud 0'
+                'cl_drawhud 1'
             ]
         }
     ]
