@@ -6,7 +6,7 @@ import { consoleTools } from './console.mjs'
 function recordFrame() {
     xdofool.type(config.pauseRebind) // Pause demo
     if (frameNumber > config.framerate * config.seconds) { // If recording done
-        // Pause the demo, leave console opening to let user know it's done
+        // Pause the demo, leave console open to let user know it's done
         consoleTools.openConsole()
         xdofool.type('demo_pause')
         xdofool.enter()
