@@ -23,4 +23,4 @@
 3. Run `sh run.sh`
 4. Once you see `"Recorder initialized. Keypresses starting in ${config.initialTimeout} ms."`, switch to your CS2 instance and it will record. 
 
-As of right now, there is no way to stop it other than the standard methods of stopping a command `Ctrl+C`.
+As of right now, there is no way to stop it other than the standard methods of stopping a command (`Ctrl+C`).
