@@ -55,18 +55,18 @@ export const commands: {
                 'mat_fullbright 0',
                 'sc_disable_world_materials 0',
                 'sc_setclassflags Default 0',
-                'r_drawviewmodel 1',
+                'r_drawviewmodel 0',
                 'cl_drawhud 0',
                 'r_csgo_render_decals 1',
                 'r_drawparticles 1'
             ]
         },
         {
-            'name': 'noview_nofeed',
+            'name': 'viewandfeed',
             'isBind': true,
             'bind': 'v',
             'commands': [
-                'r_drawviewmodel 0',
+                'r_drawviewmodel 1',
                 'cl_drawhud 1'
             ]
         }
