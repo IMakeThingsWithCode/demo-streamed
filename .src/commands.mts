@@ -19,7 +19,9 @@ export const commands: {
         'spec_show_xray 0',
         'crosshair 0',
         'cam_snapto 1',
-        'r_show_build_info 0'
+        'r_show_build_info 0',
+        'r_drawviewmodel 0',
+        'cl_drawhud 0'
     ],
     'streams': [
         {
