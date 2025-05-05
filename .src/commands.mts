@@ -1,14 +1,22 @@
 import { config } from "./config.mjs"
 
+/** Represents a recording stream */
 export interface stream {
-    name: string, // The name of the stream. Used in the filenames
-    bind: string, // The key that is rebound to the commands given
-    isBind: boolean, // If true, it will bind the key ${bind} to the commands. Otherwise, it will type them
-    commands: string[] // The commands to run before the stream is captured
+    /** The name of the stream. Used in the filenames */
+    name: string,
+    /** The key that is rebound to the commands given */
+    bind: string,
+    /** If true, it will bind the key ${bind} to the commands. Otherwise, it will type them */
+    isBind: boolean,
+    /** The commands to run before the stream is captured */
+    commands: string[]
 }
+/** Customizable commands to run throughout the recording process */
 export const commands: {
-    initialCommands: string[], // These commands run before the demo starts.
-    streams: stream[] // A list of streams and their commands
+    /** These commands run before the demo starts. */
+    initialCommands: string[],
+    /** A list of streams and their commands */
+    streams: stream[]
 } = {
     'initialCommands': [
         `bind ${config.resumeRebind} "demo_timescale ${((1000 / config.frametime) / (config.framerate)).toFixed(12)}"`,
@@ -47,14 +55,26 @@ export const commands: {
             'isBind': true,
             'commands': [
                 'r_csgo_render_dynamic_objects 1',
+                'mat_fullbright 1',
+                'r_drawworld 1',
+                'r_drawskybox 1',
+                'sc_disable_world_materials 1',
+                'sc_setclassflags Default -4',
+                'r_drawviewmodel 0',
+                'cl_drawhud 0',
+                'r_csgo_render_decals 0',
+                'r_drawparticles 0'
             ]
         },
         {
-            'name': 'normal',
+            'name': 'noviewandfeed',
             'isBind': true,
             'bind': '/',
             'commands': [
+                'r_csgo_render_dynamic_objects 1',
                 'mat_fullbright 0',
+                'r_drawworld 1',
+                'r_drawskybox 1',
                 'sc_disable_world_materials 0',
                 'sc_setclassflags Default 0',
                 'r_drawviewmodel 0',
@@ -68,8 +88,16 @@ export const commands: {
             'isBind': true,
             'bind': 'v',
             'commands': [
+                'r_csgo_render_dynamic_objects 1',
+                'mat_fullbright 0',
+                'r_drawworld 1',
+                'r_drawskybox 1',
+                'sc_disable_world_materials 0',
+                'sc_setclassflags Default 0',
                 'r_drawviewmodel 1',
-                'cl_drawhud 1'
+                'cl_drawhud 1',
+                'r_csgo_render_decals 1',
+                'r_drawparticles 1'
             ]
         }
     ]

@@ -1,23 +1,23 @@
-import { xdofool } from "./xdofool.mjs"
+import { terminal } from "./terminal.mjs"
 export class consoleTools {
     static openConsole() {
-        xdofool.type('=')
+        terminal.type('=')
     }
     static closeConsole() {
-        xdofool.type('hideconsole')
-        xdofool.enter()
+        terminal.type('hideconsole')
+        terminal.enter()
     }
     static sendSingleCommand(command: string) {
         this.openConsole()
-        xdofool.type(command)
-        xdofool.enter()
+        terminal.type(command)
+        terminal.enter()
         this.closeConsole()
     }
     static sendMultipleCommands(commands: string[]) {
         this.openConsole()
         for (let command of commands) {
-            xdofool.type(command)
-            xdofool.enter()
+            terminal.type(command)
+            terminal.enter()
         }
         this.closeConsole()
     }

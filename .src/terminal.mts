@@ -1,10 +1,10 @@
 import sh from "shelljs"
 import { stream } from "./commands.mjs"
 
-// This class is what I'm using to emulate keypresses.
+// This class is what I'm using to emulate keypresses, take screenshots, and convert the screenshots to a video.
 // If you're porting to different operating systems, this should probably be modified first.
 
-export class xdofool {
+export class terminal {
     static exec(command) { // This function executes a command (used for screenshot command)
         sh.exec(command)
     }

@@ -1,19 +1,19 @@
 import { config } from './config.mjs'
 import { commands } from './commands.mjs'
-import { xdofool } from './xdofool.mjs'
+import { terminal } from './terminal.mjs'
 import { consoleTools } from './console.mjs'
 
 function recordFrame() {
-    xdofool.type(config.pauseRebind) // Pause demo
+    terminal.type(config.pauseRebind) // Pause demo
     if (frameNumber > config.framerate * config.seconds) { // If recording done
         // Pause the demo, leave console open to let user know it's done
         consoleTools.openConsole()
-        xdofool.type('demo_pause')
-        xdofool.enter()
+        terminal.type('demo_pause')
+        terminal.enter()
 
         // Convert each streams' collection of screenshots to a video
         for (const stream of commands.streams) {
-            xdofool.convert({
+            terminal.convert({
                 framerate: config.framerate,
                 recordDir: config.recordDir,
                 framecounterDigits: config.framecounterDigits,
@@ -25,13 +25,13 @@ function recordFrame() {
         for (const stream of commands.streams) {
             // Run commands for stream by pressing bind/typing them out
             if (stream.isBind) {
-                xdofool.type(stream.bind)
+                terminal.type(stream.bind)
             } else {
                 consoleTools.sendMultipleCommands(stream.commands)
             }
 
             // Take screenshot
-            xdofool.screenshot({
+            terminal.screenshot({
                 frameNumber: frameNumber,
                 recordDir: config.recordDir,
                 framecounterDigits: config.framecounterDigits,
@@ -46,7 +46,7 @@ function recordFrame() {
 
         // Call next frame render and resume demo
         setTimeout(recordFrame, config.frametime) 
-        xdofool.type(config.resumeRebind)
+        terminal.type(config.resumeRebind)
     }
 }
 
@@ -64,8 +64,8 @@ setTimeout(() => {
 
     // Play demo
     consoleTools.openConsole()
-    xdofool.type('demo_resume; hideconsole');
-    xdofool.enter()
+    terminal.type('demo_resume; hideconsole');
+    terminal.enter()
 
     // Call initial frame render
     setTimeout(recordFrame, config.frametime)

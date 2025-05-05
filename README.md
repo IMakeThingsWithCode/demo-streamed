@@ -23,7 +23,7 @@ A few advantages of external:
 - typescript
 
 ### Adapting to your system
-- Edit `.src/xdofool.mts` to edit terminal commands for your needs
+- Edit `.src/terminal.mts` to edit terminal commands for your needs
 - Change your configuration in `.src/config.mts`
 - Update your demo recording/stream settings in `.src/commands.mts`
 
@@ -34,3 +34,9 @@ A few advantages of external:
 4. Once you see `"Recorder initialized. Keypresses starting in ${config.initialTimeout} ms."`, switch to your CS2 instance and it will record. 
 
 As of right now, there is no way to stop it other than the standard methods of stopping a command (`Ctrl+C`).
+
+### Todo
+- [ ] Add way to alter command based on frame conditions (function)
+- [ ] Add campaths
+- [ ] Add commands that run at certain point during recording
+- [ ] Add way to stop without spam ctrl+c
