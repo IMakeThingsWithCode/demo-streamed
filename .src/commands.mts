@@ -1,4 +1,5 @@
 import { config } from "./config.mjs"
+import { frameInfo } from "./index.mjs"
 
 /** Represents a recording stream */
 export interface stream {
@@ -9,15 +10,18 @@ export interface stream {
     /** If true, it will bind the key ${bind} to the commands. Otherwise, it will type them */
     isBind: boolean,
     /** The commands to run before the stream is captured */
-    commands: string[]
+    commands: string[] | ((info: frameInfo) => string)[]
 }
-/** Customizable commands to run throughout the recording process */
-export const commands: {
+
+export interface recorderCommands {
     /** These commands run before the demo starts. */
     initialCommands: string[],
     /** A list of streams and their commands */
     streams: stream[]
-} = {
+}
+
+/** Customizable commands to run throughout the recording process */
+export const commands: recorderCommands = {
     'initialCommands': [
         `bind ${config.resumeRebind} "demo_timescale ${((1000 / config.frametime) / (config.framerate)).toFixed(12)}"`,
         `bind ${config.pauseRebind} "demo_timescale 0"`,
@@ -99,6 +103,16 @@ export const commands: {
                 'r_csgo_render_decals 1',
                 'r_drawparticles 1'
             ]
-        }
+        },
+        // {
+        //     name: 'example_function_stream',
+        //     bind: '',
+        //     isBind: false, // CANNOT be bind because it types the returned command each time
+        //     commands: [
+        //         (frameInfo: frameInfo) => { // Sets cam yaw to a sine wave
+        //             return `cam_idealyaw ${Math.sin(frameInfo.frameNumber / 100) * 180}`
+        //         }
+        //     ]
+        // }
     ]
 }

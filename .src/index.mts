@@ -1,7 +1,18 @@
-import { config } from './config.mjs'
-import { commands } from './commands.mjs'
+import { config, recorderConfiguration } from './config.mjs'
+import { commands, recorderCommands, stream } from './commands.mjs'
 import { terminal } from './terminal.mjs'
 import { consoleTools } from './console.mjs'
+
+export interface frameInfo {
+    /** The current frame number */
+    frameNumber: number,
+    /** The current stream */
+    currentStream: stream,
+    /** The recorder configuration */
+    config: recorderConfiguration,
+    /** The recorder's commands */
+    commands: recorderCommands
+}
 
 function recordFrame() {
     terminal.type(config.pauseRebind) // Pause demo
@@ -27,7 +38,20 @@ function recordFrame() {
             if (stream.isBind) {
                 terminal.type(stream.bind)
             } else {
-                consoleTools.sendMultipleCommands(stream.commands)
+                let localCommands: string[] = [];
+                for(const element of stream.commands) {
+                    if(typeof element === 'function') {
+                        localCommands.push(element({
+                            frameNumber: frameNumber,
+                            currentStream: stream,
+                            config: config,
+                            commands: commands
+                        }))
+                    } else {
+                        localCommands.push(element)
+                    }
+                }
+                consoleTools.sendMultipleCommands(localCommands)
             }
 
             // Take screenshot
@@ -50,6 +74,7 @@ function recordFrame() {
     }
 }
 
+/** The current frame index */
 let frameNumber = 0;
 setTimeout(() => {
     // Run init commands
