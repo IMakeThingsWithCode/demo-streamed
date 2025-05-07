@@ -1,4 +1,5 @@
 import { config } from "./config.mjs"
+import { Extra } from "./extra.mjs"
 import { frameInfo } from "./index.mjs"
 
 /** Represents a recording stream */
@@ -36,74 +37,74 @@ export const commands: recorderCommands = {
         'cl_drawhud 0'
     ],
     'streams': [
-        {
-            'name': 'no_player',
-            'bind': '[',
-            'isBind': true,
-            'commands': [
-                'r_csgo_render_dynamic_objects 0',
-                'mat_fullbright 1',
-                'r_drawworld 1',
-                'r_drawskybox 1',
-                'sc_disable_world_materials 1',
-                'sc_setclassflags Default -4',
-                'r_drawviewmodel 0',
-                'cl_drawhud 0',
-                'r_csgo_render_decals 0',
-                'r_drawparticles 0'
-            ]
-        },
-        {
-            'name': 'fullbright',
-            'bind': ']',
-            'isBind': true,
-            'commands': [
-                'r_csgo_render_dynamic_objects 1',
-                'mat_fullbright 1',
-                'r_drawworld 1',
-                'r_drawskybox 1',
-                'sc_disable_world_materials 1',
-                'sc_setclassflags Default -4',
-                'r_drawviewmodel 0',
-                'cl_drawhud 0',
-                'r_csgo_render_decals 0',
-                'r_drawparticles 0'
-            ]
-        },
-        {
-            'name': 'noviewandfeed',
-            'isBind': true,
-            'bind': '/',
-            'commands': [
-                'r_csgo_render_dynamic_objects 1',
-                'mat_fullbright 0',
-                'r_drawworld 1',
-                'r_drawskybox 1',
-                'sc_disable_world_materials 0',
-                'sc_setclassflags Default 0',
-                'r_drawviewmodel 0',
-                'cl_drawhud 0',
-                'r_csgo_render_decals 1',
-                'r_drawparticles 1'
-            ]
-        },
-        {
-            'name': 'viewandfeed',
-            'isBind': true,
-            'bind': 'v',
-            'commands': [
-                'r_csgo_render_dynamic_objects 1',
-                'mat_fullbright 0',
-                'r_drawworld 1',
-                'r_drawskybox 1',
-                'sc_disable_world_materials 0',
-                'sc_setclassflags Default 0',
-                'r_drawviewmodel 1',
-                'cl_drawhud 1',
-                'r_csgo_render_decals 1',
-                'r_drawparticles 1'
-            ]
-        },
+        // {
+        //     'name': 'no_player',
+        //     'bind': '[',
+        //     'isBind': true,
+        //     'commands': [
+        //         'r_csgo_render_dynamic_objects 0',
+        //         'mat_fullbright 1',
+        //         'r_drawworld 1',
+        //         'r_drawskybox 1',
+        //         'sc_disable_world_materials 1',
+        //         'sc_setclassflags Default -4',
+        //         'r_drawviewmodel 0',
+        //         'cl_drawhud 0',
+        //         'r_csgo_render_decals 0',
+        //         'r_drawparticles 0'
+        //     ]
+        // },
+        // {
+        //     'name': 'fullbright',
+        //     'bind': ']',
+        //     'isBind': true,
+        //     'commands': [
+        //         'r_csgo_render_dynamic_objects 1',
+        //         'mat_fullbright 1',
+        //         'r_drawworld 1',
+        //         'r_drawskybox 1',
+        //         'sc_disable_world_materials 1',
+        //         'sc_setclassflags Default -4',
+        //         'r_drawviewmodel 0',
+        //         'cl_drawhud 0',
+        //         'r_csgo_render_decals 0',
+        //         'r_drawparticles 0'
+        //     ]
+        // },
+        // {
+        //     'name': 'noviewandfeed',
+        //     'isBind': true,
+        //     'bind': '/',
+        //     'commands': [
+        //         'r_csgo_render_dynamic_objects 1',
+        //         'mat_fullbright 0',
+        //         'r_drawworld 1',
+        //         'r_drawskybox 1',
+        //         'sc_disable_world_materials 0',
+        //         'sc_setclassflags Default 0',
+        //         'r_drawviewmodel 0',
+        //         'cl_drawhud 0',
+        //         'r_csgo_render_decals 1',
+        //         'r_drawparticles 1'
+        //     ]
+        // },
+        // {
+        //     'name': 'viewandfeed',
+        //     'isBind': true,
+        //     'bind': 'v',
+        //     'commands': [
+        //         'r_csgo_render_dynamic_objects 1',
+        //         'mat_fullbright 0',
+        //         'r_drawworld 1',
+        //         'r_drawskybox 1',
+        //         'sc_disable_world_materials 0',
+        //         'sc_setclassflags Default 0',
+        //         'r_drawviewmodel 1',
+        //         'cl_drawhud 1',
+        //         'r_csgo_render_decals 1',
+        //         'r_drawparticles 1'
+        //     ]
+        // },
         // {
         //     name: 'example_function_stream',
         //     bind: '',
@@ -114,5 +115,37 @@ export const commands: recorderCommands = {
         //         }
         //     ]
         // }
+        {
+            name: 'example_keyframe_stream',
+            bind: '',
+            isBind: false, // CANNOT be bind because it types the returned command each time
+            commands: [
+                (frameInfo: frameInfo) => {
+                    return `fov_cs_debug ${
+                        Extra.tweenAllSingle(
+                            [
+                                {
+                                    value: 90,
+                                    ms: 500
+                                },
+                                {
+                                    value: 110,
+                                    ms: 750
+                                },
+                                {
+                                    value: 65,
+                                    ms: 1250
+                                },
+                                {
+                                    value: 90,
+                                    ms: 1750
+                                }
+                            ],
+                            frameInfo.timeElapsed
+                        )
+                    }`
+                }
+            ]
+        }
     ]
 }

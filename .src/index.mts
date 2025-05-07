@@ -11,7 +11,9 @@ export interface frameInfo {
     /** The recorder configuration */
     config: recorderConfiguration,
     /** The recorder's commands */
-    commands: recorderCommands
+    commands: recorderCommands,
+    /** The length of the footage recorded thus far (in ms) */
+    timeElapsed: number
 }
 
 function recordFrame() {
@@ -45,7 +47,8 @@ function recordFrame() {
                             frameNumber: frameNumber,
                             currentStream: stream,
                             config: config,
-                            commands: commands
+                            commands: commands,
+                            timeElapsed: (frameNumber / config.framerate) * 1000
                         }))
                     } else {
                         localCommands.push(element)
