@@ -11,7 +11,7 @@ export interface stream {
     /** If true, it will bind the key ${bind} to the commands. Otherwise, it will type them */
     isBind: boolean,
     /** The commands to run before the stream is captured */
-    commands: string[] | ((info: frameInfo) => string)[]
+    commands: (string | ((info: frameInfo) => string))[]
 }
 
 export interface recorderCommands {
@@ -114,7 +114,7 @@ export const commands: recorderCommands = {
         //             return `cam_idealyaw ${Math.sin(frameInfo.frameNumber / 100) * 180}`
         //         }
         //     ]
-        // }
+        // },
         // {
         //     name: 'example_keyframe_stream',
         //     bind: '',
@@ -145,6 +145,28 @@ export const commands: recorderCommands = {
         //                 )
         //             }`
         //         }
+        //     ]
+        // },
+        // {
+        //     name: 'example_multi_keyframe_stream',
+        //     bind: '',
+        //     isBind: false, // CANNOT be bind because it types the returned command each time
+        //     commands: [
+        //         (frameInfo: frameInfo) => {
+        //             return `spec_goto ${Extra.tweenAllMulti(
+        //                 [
+        //                     { //         X  Y  Z  Pitch Yaw
+        //                         values: [-475.9, -2002.0, -64.1, 6.8, 34.8],
+        //                         ms: 0
+        //                     },
+        //                     {
+        //                         values: [18.3, -1666.9, -113.4, 0.2, 159.1],
+        //                         ms: 1000
+        //                     }
+        //                 ], frameInfo.timeElapsed
+        //             ).join(' ')}; cl_lock_camera 0`
+        //         },
+        //         'cl_lock_camera 1'
         //     ]
         // }
     ]
