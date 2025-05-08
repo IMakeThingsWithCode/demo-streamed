@@ -37,7 +37,7 @@ As of right now, there is no way to stop it other than the standard methods of s
 
 ### Todo
 - [x] Add way to alter command based on frame conditions (function)
+- [x] Add way to keyframe cvars
+- [x] Add campaths
 - [ ] Add commands that run at certain point during recording
-- [ ] Add way to keyframe cvars
-- [ ] Add campaths
 - [ ] Add way to stop without spam ctrl+c
