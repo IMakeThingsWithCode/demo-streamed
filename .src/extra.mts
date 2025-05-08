@@ -24,6 +24,21 @@ export class Extra {
     ): number {
         return currentKeyframe.value + (nextKeyframe.value - currentKeyframe.value) * ((currentTime - currentKeyframe.ms) / (nextKeyframe.ms - currentKeyframe.ms));
     }
+
+    /** Determines the values at a point between two multi keyframes */
+    static tweenMulti(
+        /** The keyframe currently in action (immidiate left of imaginary playhead) */
+        currentKeyframe: multiKeyframe,
+        /** The keyframe next to be in action (immidiate right of imaginary playhead) */
+        nextKeyframe: multiKeyframe,
+        /** The current time elapsed (in ms) */
+        currentTime: number
+    ): number[] {
+        let values: number[] = [];
+
+        return values
+    }
+
     /** Takes a list of single keyframes and the time and gives the current value */
     static tweenAllSingle(
         /** The keyframes to tween */
@@ -43,5 +58,33 @@ export class Extra {
         }
         // Return last keyframe
         return keyframes.slice(-1)[0].value;
+    }
+
+    /** Takes a list of multi keyframes and the time and gives the current values */
+    static tweenAllMulti(
+        /** The keyframes to tween */
+        keyframes: multiKeyframe[],
+        /** The current time (in ms) */
+        time: number
+    ): number[] {
+        let reformattedValues: keyframe[][] = [];
+
+        for (let i = 0; i < keyframes[0].values.length; i++) {
+            reformattedValues.push([]);
+            keyframes.forEach((keyframe) => {
+                reformattedValues[i].push({
+                    value: keyframe.values[i],
+                    ms: keyframe.ms
+                });
+            })
+        }
+
+        let values: number[] = [];
+
+        for(const value of reformattedValues) {
+            values.push(this.tweenAllSingle(value, time))
+        }
+
+        return values
     }
 }

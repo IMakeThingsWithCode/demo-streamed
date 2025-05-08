@@ -23,7 +23,7 @@ export const config: recorderConfiguration = {
     "frametime": 500,
     "initialTimeout": 5000,
     "recordDir": "$HOME/Videos/streams/out/",
-    "seconds": 2,
+    "seconds": 3,
     "pauseRebind": "k",
     "resumeRebind": "l",
     "framecounterDigits": 6
