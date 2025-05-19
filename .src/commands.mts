@@ -24,9 +24,9 @@ export interface recorderCommands {
 /** Customizable commands to run throughout the recording process */
 export const commands: recorderCommands = {
     'initialCommands': [
-        `bind ${config.resumeRebind} "demo_timescale ${((1000 / config.frametime) / (config.framerate)).toFixed(12)}"`,
+        `bind ${config.resumeRebind} "demo_timescale ${((1000 / config.frametime) / (config.framerate) * config.timescale).toFixed(12)}"`,
         `bind ${config.pauseRebind} "demo_timescale 0"`,
-        `demo_timescale ${((1000 / config.frametime) / (config.framerate)).toFixed(12)}`,
+        `demo_timescale ${((1000 / config.frametime) / (config.framerate) * config.timescale).toFixed(12)}`,
         'host_framerate 0',
         'cl_draw_only_deathnotices 1',
         'spec_show_xray 0',

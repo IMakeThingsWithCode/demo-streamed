@@ -14,7 +14,9 @@ export interface recorderConfiguration {
     /** The key used to resume the demo */
     resumeRebind: string,
     /** The amount of digits used in the frame counter of the filename */
-    framecounterDigits: number
+    framecounterDigits: number,
+    /** The timescale of the demo */
+    timescale: number,
 }
 
 /** The configuration for the recorder */
@@ -26,5 +28,6 @@ export const config: recorderConfiguration = {
     "seconds": 8,
     "pauseRebind": "k",
     "resumeRebind": "l",
-    "framecounterDigits": 6
+    "framecounterDigits": 6,
+    "timescale": 1
 }
