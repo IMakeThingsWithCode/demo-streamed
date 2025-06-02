@@ -1,5 +1,5 @@
 import { config } from "./config.mjs"
-import { Extra } from "./extra.mjs"
+import { Extra, myCampath } from "./extra.mjs"
 import { frameInfo } from "./index.mjs"
 
 /** Represents a recording stream */
@@ -167,6 +167,18 @@ export const commands: recorderCommands = {
         //             ).join(' ')}; cl_lock_camera 0`
         //         },
         //         'cl_lock_camera 1'
+        //     ]
+        // }
+        // {
+        //     name: 'campath',
+        //     bind: '',
+        //     isBind: false, // CANNOT be bind because it types the returned command each time
+        //     commands: [
+        //         (frameInfo: frameInfo) => {
+        //             return `spec_goto ${Extra.tweenAllMulti(
+        //                 myCampath, frameInfo.timeElapsed
+        //             ).join(' ')}; cl_lock_camera 0`
+        //         }
         //     ]
         // }
     ]
