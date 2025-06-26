@@ -37,11 +37,11 @@ As of right now, there is no way to stop it other than the standard methods of s
 
 ### Todo
 - [x] Add way to alter command based on frame conditions (function)
-- [x] Add way to keyframe cvars
-- [x] Add campaths
+- [ ] Add way to keyframe cvars
+- [ ] Add campaths
 - [ ] Fix yaw tweening
-- [ ] Improve campaths
-- [ ] Add way to check the status of cvars (spec_pos)
 - [ ] Add custom tweening functions
+- [ ] Improve campaths (splines)
 - [ ] Add commands that run at certain point during recording
+- [ ] Add way to check the status of cvars (spec_pos)
 - [ ] Add way to stop without spam ctrl+c
